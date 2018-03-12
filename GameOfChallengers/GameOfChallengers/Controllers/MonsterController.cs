@@ -17,6 +17,10 @@ namespace GameOfChallengers.Controllers
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
             int numOfItems = rand.Next(4);//drop 0, 1, 2, or 3(all) of its items
+            if (GameGlobals.DisableRandomNumbers)
+            {
+                numOfItems = 1;
+            }
             List<string> itemIds = monster.GetItemIDs();
             var items = ItemsViewModel.Instance.Dataset;
             for (int i=0; i<numOfItems; i++)

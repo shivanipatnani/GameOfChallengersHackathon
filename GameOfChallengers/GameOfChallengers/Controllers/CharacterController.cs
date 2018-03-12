@@ -150,7 +150,11 @@ namespace GameOfChallengers.Controllers
             //the characters stats will be reset based on a data table with the base stats stored
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
-            int rolld = rand.Next(11);
+            int rolld = rand.Next(1, 11);
+            if (GameGlobals.DisableRandomNumbers)
+            {
+                rolld = 1;
+            }
             character.Level = newLevel;
             character.Attack = lp[newLevel - 1].Attack;
             character.Defense = lp[newLevel - 1].Defense;

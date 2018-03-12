@@ -72,6 +72,10 @@ namespace GameOfChallengers.Controllers
             //this will run the turns in a loop until either all the team is dead or all the monsters are
             BattleScreen screen = new BattleScreen();
             string message;
+            message = "Battle Start" + " Characters :" + team.Dataset.Count;
+            Debug.WriteLine(message);
+            message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.Count;
+            Debug.WriteLine(message);
             while (CurrMonsters.Dataset.Count > 0)
             {
                 if(team.Dataset.Count <= 0)
@@ -82,14 +86,12 @@ namespace GameOfChallengers.Controllers
                 {
                    
 
-                    message = "Battle Start" + " Characters :" + team.Dataset.Count;
-                    Debug.WriteLine(message);
-                    screen.BattleMessages(message);
+                    
+                    //screen.BattleMessages(message);
 
                     //.WriteLine(Text);
-                    message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.Count;
-                    Debug.WriteLine(message);
-                    screen.BattleMessages(message);
+                    
+                    //screen.BattleMessages(message);
 
 
                     TurnController turn = new TurnController();
@@ -100,7 +102,7 @@ namespace GameOfChallengers.Controllers
                         Creature character = TurnOrder[i];
                         //int loc = GetNewLoc(character, GameBoard);
                         //GameBoard = turn.Move(character, loc, GameBoard);
-                        message = "New Turn :" + TurnOrder[i];
+                        message = "New Turn :" + TurnOrder[i].Name;
                         Debug.WriteLine(message);
                         screen.BattleMessages(message);
 
@@ -133,7 +135,7 @@ namespace GameOfChallengers.Controllers
                                 screen.BattleMessages(message);
 
                                 ItemPool.AddRange(MC.DropItems(target));
-                                message = "Items Dropped :" + MC.DropItems(target);
+                                message = "Items Dropped :" + ItemPool.Count.ToString();
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
@@ -142,7 +144,7 @@ namespace GameOfChallengers.Controllers
                                 CurrMonsters.Dataset.Remove(target);
                                 GameBoardRemove(target);
 
-                                message = "Monster Removed :" + CurrMonsters.Dataset.Remove(target);
+                                message = "Monster Removed :" + target.Name;
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
@@ -176,7 +178,7 @@ namespace GameOfChallengers.Controllers
                                 screen.BattleMessages(message);
 
                                 ItemPool.AddRange(CC.DropItems(target));
-                                message = "Items Dropped :" + CC.DropItems(target);
+                                message = "Items Dropped :" + ItemPool.Count.ToString();
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
@@ -185,7 +187,7 @@ namespace GameOfChallengers.Controllers
                                 team.Dataset.Remove(target);
                                 GameBoardRemove(target);
 
-                                message = "Character Removed :" + team.Dataset.Remove(target);
+                                message = "Character Removed :" + target.Name;
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
                             }

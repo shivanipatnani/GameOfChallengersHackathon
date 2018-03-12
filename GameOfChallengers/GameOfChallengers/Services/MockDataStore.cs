@@ -56,9 +56,9 @@ namespace GameOfChallengers.Services
             {
                 //characters
                 new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 1", Level = 1, Attack = 10, Defense = 1, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1,ImageURI = "fighter1.jpg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", Level = 2, Attack = 20, Defense = 2, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 100, Alive = true, Loc = 2,ImageURI = "fighter2.jpeg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", Level = 3, Attack = 30, Defense = 3, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 300, Alive = true, Loc = 3,ImageURI = "fighter3.jpeg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", Level = 2, Attack = 30, Defense = 4, Speed = 4, XP = 300, MaxHealth = 40, CurrHealth = 200, Alive = true, Loc = 3,ImageURI = "fighter4.jpg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", Level = 2, Attack = 20, Defense = 2, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2,ImageURI = "fighter2.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", Level = 3, Attack = 30, Defense = 3, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 30, Alive = true, Loc = 3,ImageURI = "fighter3.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", Level = 2, Attack = 30, Defense = 4, Speed = 4, XP = 300, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 3,ImageURI = "fighter4.jpg"/*, CInventory = null*/ },
                 new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 5", Level = 5, Attack = 40, Defense = 5, Speed = 3, XP = 300, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 3,ImageURI = "fighter5.jpeg"/*, CInventory = null*/ },
                 new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 6", Level = 6, Attack = 30, Defense = 3, Speed = 5, XP = 300, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 3,ImageURI = "fighter6.jpeg"/*, CInventory = null*/ },
                 

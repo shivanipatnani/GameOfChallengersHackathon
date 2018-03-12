@@ -16,7 +16,7 @@ namespace GameOfChallengers.Views
         public AboutPage()
         {
             InitializeComponent();
-            ValueForHit.Text = GameGlobals.HitValue.ToString();
+            ValueForHit.Text = "";
             BindingContext = ValueForHit;
             SettingDataSource.IsToggled = true;
             DebugSetting.IsToggled = true;
@@ -53,19 +53,25 @@ namespace GameOfChallengers.Views
 
         private void Switch_OnRandomNumber(object sender, ToggledEventArgs e)
         {
-
+            if (e.Value == true)
+                GameGlobals.DisableRandomNumbers = true;
+            else
+                GameGlobals.DisableRandomNumbers = false;
         }
 
 
         private void Switch_OnMiss(object sender, ToggledEventArgs e)
         {
-
+            if (e.Value == true)
+                GameGlobals.HitValue = 1;
+            
         }
 
 
         private void Switch_OnHit(object sender, ToggledEventArgs e)
         {
-
+            if (e.Value == true)
+                GameGlobals.HitValue = 20;
         }
 
 

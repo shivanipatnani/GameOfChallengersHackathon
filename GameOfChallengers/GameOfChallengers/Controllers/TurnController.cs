@@ -28,14 +28,19 @@ namespace GameOfChallengers.Controllers
             Random roll = new Random(dateSeed);
             //run the attack of creature1 on creature2, return if it succeeded or not
             //attack is successful(true) if creature1 score > creature2 score
+            int rollValue = roll.Next(1, 21);
+            if (GameGlobals.DisableRandomNumbers)
+            {
+                rollValue = 20;
+            }
             if (creature1.Type == 0)
             {
-                score1 = roll.Next(1, 21) + creature1.Level + cc.GetBaseAttack(creature1);
+                score1 = rollValue + creature1.Level + cc.GetBaseAttack(creature1);
                 score2 = mc.GetBaseDefense(creature2) + creature2.Level;
             }
             else
             {
-                score1 = roll.Next(1, 21) + creature2.Level + mc.GetBaseAttack(creature2);
+                score1 = rollValue + creature2.Level + mc.GetBaseAttack(creature2);
                 score2 = cc.GetBaseDefense(creature1) + creature1.Level;
             }
 

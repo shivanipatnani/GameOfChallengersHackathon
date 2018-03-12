@@ -8,5 +8,6 @@ namespace GameOfChallengers.Models
     {
         public static string PlayerName = "Enter Your Name";
         public static int HitValue = 0;
+        public static bool DisableRandomNumbers = false;
     }
 }

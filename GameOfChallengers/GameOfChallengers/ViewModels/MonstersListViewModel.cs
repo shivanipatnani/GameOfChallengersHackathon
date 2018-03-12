@@ -104,6 +104,10 @@ namespace GameOfChallengers.ViewModels
             for (int i = 0; i < 6; i++)
             {
                 int index = rand.Next(tempDataset.Count);
+                if (GameGlobals.DisableRandomNumbers)
+                {
+                    index = 0;
+                }
                 Creature monster = new Creature();
                 monster.Update(tempDataset[index]);//get a random monster type
                 monster.Id = "monster" + i.ToString();//Guid.NewGuid().ToString();
@@ -113,7 +117,12 @@ namespace GameOfChallengers.ViewModels
                 monster.Attack = lp[round].Attack;
                 monster.Defense = lp[round].Defense;
                 monster.Speed = lp[round].Speed;
-                monster.MaxHealth = rand.Next(11) * round;
+                int healthRand = rand.Next(11);
+                if (GameGlobals.DisableRandomNumbers)
+                {
+                    healthRand = 1;
+                }
+                monster.MaxHealth = healthRand * round;
                 monster.CurrHealth = monster.MaxHealth;
                 monster.RHandItemID = "bow";//              ***temp for demo***
                 monster.BodyItemID = "helmet";

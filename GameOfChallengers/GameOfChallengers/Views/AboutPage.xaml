@@ -163,7 +163,7 @@
                 <Label 
                 x:Name="RandomNumberLabel"
                 FontSize="Small"
-                Text="Random Number"
+                Text="Disable Random Numbers"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />
@@ -206,7 +206,7 @@
 
                  <Label 
                 FontSize="Small"
-                Text="1 Miss"
+                Text="Force Miss"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />       
@@ -225,7 +225,7 @@
 
                         <Label 
                 FontSize="Small"
-                Text="20 Hit"
+                Text="Force Hit"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />       
