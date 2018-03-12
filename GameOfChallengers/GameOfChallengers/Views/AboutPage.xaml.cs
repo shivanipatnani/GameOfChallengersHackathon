@@ -7,16 +7,66 @@ using GameOfChallengers.Services;
 using GameOfChallengers.Controllers;
 using GameOfChallengers.Models;
 
+
 namespace GameOfChallengers.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AboutPage : ContentPage
-	{
-		public AboutPage ()
-		{
-			InitializeComponent ();
+    public partial class AboutPage : ContentPage
+    {
+        public AboutPage()
+        {
+            InitializeComponent();
+            ValueForHit.Text = GameGlobals.HitValue.ToString();
+            BindingContext = ValueForHit;
             SettingDataSource.IsToggled = true;
-		}
+            DebugSetting.IsToggled = true;
+            ServerPost.IsToggled = false;
+        }
+
+
+
+        private void Switch_OnDebugSetting(object sender, ToggledEventArgs e)
+        {
+
+            if (e.Value == true)
+            {
+
+                MockDatastore.IsVisible = true;
+                ClearDatabase.IsVisible = true;
+                ServerItem.IsVisible = true;
+                RandomNumber.IsVisible = true;
+                DebugValue.IsVisible = true;
+            }
+            else
+            {
+
+                MockDatastore.IsVisible = false;
+                ClearDatabase.IsVisible = false;
+                ServerItem.IsVisible = false;
+                RandomNumber.IsVisible = false;
+                DebugValue.IsVisible = false;
+            }
+
+        }
+
+
+
+        private void Switch_OnRandomNumber(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+
+        private void Switch_OnMiss(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+
+        private void Switch_OnHit(object sender, ToggledEventArgs e)
+        {
+
+        }
 
 
         private void Switch_OnToggled(object sender, ToggledEventArgs e)
@@ -59,44 +109,47 @@ namespace GameOfChallengers.Views
             }
         }
 
-        private async void GetItems_Command(object sender, EventArgs e)
+        //private async void GetItems_Command(object sender, EventArgs e)
+        //{
+        //    var answer = await DisplayAlert("Get", "Sure you want to Get Items from the Server?", "Yes", "No");
+        //    if (answer)
+        //    {
+        //        // Call to the Item Service and have it Get the Items
+        //        ItemsController.Instance.GetItemsFromServer();
+        //    }
+        //}
+
+        private async void GetItemsPost_Command(object sender, ToggledEventArgs e)
         {
-            var answer = await DisplayAlert("Get", "Sure you want to Get Items from the Server?", "Yes", "No");
-            if (answer)
+            if (e.Value == true)
             {
-                // Call to the Item Service and have it Get the Items
-                ItemsController.Instance.GetItemsFromServer();
-            }
-        }
+                //ItemsController.Instance.GetItemsFromGame(int number, int level, AttributeEnum attribute, ItemLocationEnum location, bool random, bool updateDataBase)
 
-        private async void GetItemsPost_Command(object sender, EventArgs e)
-        {
-            //ItemsController.Instance.GetItemsFromGame(int number, int level, AttributeEnum attribute, ItemLocationEnum location, bool random, bool updateDataBase)
+                var number = 25;    // 10 items
+                var level = 20;  // Max Value of 6
+                var attribute = AttributeEnum.Unknown;  // Any Attribute
+                var location = ItemLocationEnum.Unknown;    // Any Location
+                var random = true;  // Random between 1 and Level
+                var updateDataBase = true;  // Add them to the DB
 
-            var number = 25;    // 10 items
-            var level = 20;  // Max Value of 6
-            var attribute = AttributeEnum.Unknown;  // Any Attribute
-            var location = ItemLocationEnum.Unknown;    // Any Location
-            var random = true;  // Random between 1 and Level
-            var updateDataBase = true;  // Add them to the DB
+                var myDataList = await ItemsController.Instance.GetItemsFromGame(number, level, attribute, location, random, updateDataBase);
 
-            var myDataList = await ItemsController.Instance.GetItemsFromGame(number, level, attribute, location, random, updateDataBase);
+                var myOutput = "No Results";
 
-            var myOutput = "No Results";
-
-            if (myDataList != null && myDataList.Count > 0)
-            {
-                // Reset the output
-                myOutput = "";
-
-                foreach (var item in myDataList)
+                if (myDataList != null && myDataList.Count > 0)
                 {
-                    // Add them line by one, use \n to force new line for output display.
-                    myOutput += item.FormatOutput() + "\n";
-                }
-            }
+                    // Reset the output
+                    myOutput = "";
 
-            var answer = await DisplayAlert("Returned List", myOutput, "Yes", "No");
+                    foreach (var item in myDataList)
+                    {
+                        // Add them line by one, use \n to force new line for output display.
+                        myOutput += item.FormatOutput() + "\n";
+                    }
+                }
+
+                var answer = await DisplayAlert("Returned List", myOutput, "Yes", "No");
+            }
         }
     }
 }

@@ -20,38 +20,38 @@
             >
        
             <Label 
-            FontSize="Large"
+            FontSize="Small"
             Text="About"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
 
             <Label 
-            FontSize="Medium"
+            FontSize="Small"
             Text="designed and developed by"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
 
              <Label 
-            FontSize="Large"
+            FontSize="Medium"
             Text="Game Of Challengers"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
 
             <Label 
-            FontSize="Medium"
+            FontSize="Small"
             Text="Asa Davidson"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
                 
             <Label 
-            FontSize="Medium"
+            FontSize="Small"
             Text="Kanika Mishra"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
 
 
             <Label 
-            FontSize="Medium"
+            FontSize="Small"
             Text="Shivani Patnani"
             VerticalOptions="Center" 
             HorizontalOptions="CenterAndExpand" />
@@ -64,11 +64,32 @@
                 Orientation="Vertical"
                 >
 
-            <StackLayout
+
+                 <StackLayout
                 HorizontalOptions="Start"
                 Orientation="Horizontal">
 
                 <Label 
+                FontSize="Small"
+                Text="Debug Settings"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+
+                <Switch 
+                x:Name="DebugSetting"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnDebugSetting"/>
+            </StackLayout>
+
+                
+            <StackLayout
+                    x:Name="MockDatastore"
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                <Label 
+                x:Name="MockDatastoreLabel"
                 FontSize="Small"
                 Text="Use Mock DataStore"
                 HorizontalTextAlignment="Start"
@@ -82,17 +103,20 @@
             </StackLayout>
 
             <StackLayout
+                    x:Name="ClearDatabase"
                 HorizontalOptions="Start"
                 Orientation="Horizontal">
 
                 <Label 
                 FontSize="Small"
+                x:Name="ClearDatabaseLabel"        
                 Text="Clear Database"
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"
                 />
 
-                <Button  
+                <Button 
+                    x:Name="ClearButton"    
                     Text="Clear" 
                     Clicked="ClearDatabase_Command" 
                     HorizontalOptions="Center"
@@ -100,6 +124,7 @@
             </StackLayout>
 
             <StackLayout
+                x:Name="ServerItem"
                 HorizontalOptions="FillAndExpand"
                 Orientation="Horizontal">
 
@@ -109,19 +134,110 @@
                     HorizontalTextAlignment="Start"
                     HorizontalOptions="Start"/>
 
-                    <Button  
+                   <!-- <Button  
                     Text="Get" 
                     Clicked="GetItems_Command" 
                     HorizontalOptions="CenterAndExpand"
-                    TextColor="Black" />
+                    TextColor="Black" />  -->
 
-                    <Button  
+                <!--    <Button  
                     Text="Post" 
                     Clicked="GetItemsPost_Command" 
                     HorizontalOptions="CenterAndExpand"
-                    TextColor="Black" />
+                    TextColor="Black" /> -->
+
+                     <Switch 
+                        x:Name="ServerPost"
+                     HorizontalOptions="CenterAndExpand"
+                     Toggled="GetItemsPost_Command"/>
+
+                    
             </StackLayout>
 
+
+             <StackLayout
+                    x:Name="RandomNumber"
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                <Label 
+                x:Name="RandomNumberLabel"
+                FontSize="Small"
+                Text="Random Number"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+
+                <Switch 
+                x:Name="RandomNumberSwitch"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnRandomNumber"/>
+            </StackLayout>
+
+                 <StackLayout
+                    x:Name="DebugValue"
+                HorizontalOptions="Start"
+                Orientation="Vertical">
+
+      
+                <StackLayout
+                HorizontalOptions="Start"
+                 Orientation="Horizontal">
+
+
+                <Label 
+               FontSize="Small"
+                Text=" Set Value For Hit" 
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+                        
+                <Entry 
+                 x:Name="ValueForHit"
+                 Text=""
+                 FontSize="Small" 
+                 HorizontalOptions="Start"
+                 VerticalOptions="Center"/>
+                        
+                   </StackLayout> 
+               <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                 <Label 
+                FontSize="Small"
+                Text="1 Miss"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />       
+                    
+                <Switch 
+                x:Name="Enable1Miss"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnMiss"/>
+                        
+                </StackLayout>
+
+
+                     <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                        <Label 
+                FontSize="Small"
+                Text="20 Hit"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />       
+                        <Switch 
+                x:Name="Enable20Hit"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnHit"/>
+                        </StackLayout>
+
+                    
+            </StackLayout>
+                
             </StackLayout>
     </StackLayout>
     </ScrollView>

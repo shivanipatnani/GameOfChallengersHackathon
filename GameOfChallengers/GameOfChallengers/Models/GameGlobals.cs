@@ -7,5 +7,6 @@ namespace GameOfChallengers.Models
     public static class GameGlobals
     {
         public static string PlayerName = "Enter Your Name";
+        public static int HitValue = 0;
     }
 }
