@@ -117,8 +117,8 @@ namespace GameOfChallengers.Controllers
                         {
                             continue;
                         }
-                        bool hit = turn.Attack(character, target);
-                        if (hit)
+                        int hit = turn.Attack(character, target);
+                        if (hit == 1)
                         {
                             int damageToDo = turn.DamageToDo(character);
                             int xpToGive = MC.GiveXP(target, damageToDo);
@@ -166,8 +166,8 @@ namespace GameOfChallengers.Controllers
                         {
                             continue;
                         }
-                        bool hit = turn.Attack(monster, target);
-                        if (hit)
+                        int hit = turn.Attack(monster, target);
+                        if (hit == 1)
                         {
                             int damageToDo = turn.DamageToDo(monster);
                             bool characterAlive = CC.TakeDamage(target, damageToDo);

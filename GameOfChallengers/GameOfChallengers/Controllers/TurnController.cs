@@ -20,10 +20,16 @@ namespace GameOfChallengers.Controllers
 
 
 
-        public bool Attack(Creature creature1, Creature creature2)
+        public int Attack(Creature creature1, Creature creature2)
         {
+            if(GameGlobals.HitValue >= 0)
+            {
+                
+                return GameGlobals.HitValue;
+            }
             int score1, score2 = 0;
-            bool succeeded = false;
+            //bool succeeded = false;
+            int hit = 0;
             int dateSeed = DateTime.Now.Millisecond;
             Random roll = new Random(dateSeed);
             //run the attack of creature1 on creature2, return if it succeeded or not
@@ -31,8 +37,25 @@ namespace GameOfChallengers.Controllers
             int rollValue = roll.Next(1, 21);
             if (GameGlobals.DisableRandomNumbers)
             {
-                rollValue = 20;
+                rollValue = 19;
             }
+            if(rollValue == 1)
+            {
+                if (GameGlobals.ForceMiss)
+                {
+                    return -1;
+                }
+                return 0;
+            }
+            if(rollValue == 20)
+            {
+                if (GameGlobals.ForceHit)
+                {
+                    return 2;
+                }
+                return 1;
+            }
+            
             if (creature1.Type == 0)
             {
                 score1 = rollValue + creature1.Level + cc.GetBaseAttack(creature1);
@@ -46,10 +69,10 @@ namespace GameOfChallengers.Controllers
 
             if (score1 > score2)
             {
-                succeeded = true;
+                hit = 1;
 
             }
-            return succeeded;
+            return hit;
         }
             
            

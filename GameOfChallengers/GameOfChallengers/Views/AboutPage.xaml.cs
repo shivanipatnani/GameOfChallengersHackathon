@@ -63,15 +63,19 @@ namespace GameOfChallengers.Views
         private void Switch_OnMiss(object sender, ToggledEventArgs e)
         {
             if (e.Value == true)
-                GameGlobals.HitValue = 1;
-            
+                GameGlobals.ForceMiss = true;
+            else
+                GameGlobals.ForceMiss = false;
+
         }
 
 
         private void Switch_OnHit(object sender, ToggledEventArgs e)
         {
             if (e.Value == true)
-                GameGlobals.HitValue = 20;
+                GameGlobals.ForceHit = true;
+            else
+                GameGlobals.ForceHit = false;
         }
 
 
