@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Scores.DeleteScorePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Delete Score?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                
+                <Label Text="Name" FontSize="Small" />
+                <Label Text="{Binding Data.Name}" FontSize="Small" />
+                <Label Text="Final Score" FontSize="Small" />
+                <Label Text="{Binding Data.FinalScore}" FontSize="Small" />
+                <Label Text="Date" FontSize="Small" />
+                <Label Text="{Binding Data.Date}" FontSize="Small" />
+                <Label Text="Rounds Won" FontSize="Small" />
+                <Label Text="{Binding Data.Round}" FontSize="Small" />
+                <Label Text="Turns" FontSize="Small" />
+                <Label Text="{Binding Data.Turns}" FontSize="Small" />
+                <Label Text="Auto mode" FontSize="Small" />
+                <Label Text="{Binding Data.Auto}" FontSize="Small" />
+                <Label Text="TotalXP" FontSize="Small" />
+                <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Yes" Clicked="Delete_Clicked" />
+                    <Button Text="No" Clicked="Cancel_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

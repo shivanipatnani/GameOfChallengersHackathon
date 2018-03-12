@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Character.NewCharacter">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Create Character" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Data.Attack}" FontSize="Small" />
+                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Data.Defense}" FontSize="Small" />
+                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                <Button Text="Add Inventory Items" Clicked="AddItems_Clicked" />
+                <Button Text="Create" Clicked="Save_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

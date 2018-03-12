@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Scores.ScoreDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Score Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <ScrollView VerticalOptions="StartAndExpand">
+                    <StackLayout>
+                        <Label Text="Name" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Name}" FontSize="Small" />
+                        <Label Text="Final Score" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.FinalScore}" FontSize="Small" />
+                        <Label Text="Date" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Date}" FontSize="Small" />
+                        <Label Text="Rounds Won" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Round}" FontSize="Small" />
+                        <Label Text="Turns" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Turns}" FontSize="Small" />
+                        <Label Text="Auto mode" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Auto}" FontSize="Small" />
+                        <Label Text="TotalXP" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
+                        <!--<Label Text="Text" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="{Binding Data.Text}" FontSize="Small" />-->
+                        
+                    </StackLayout>
+                </ScrollView>
+                <Button Text="Edit" Clicked="Edit_Clicked" />
+                <Button Text="Delete" Clicked="Delete_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

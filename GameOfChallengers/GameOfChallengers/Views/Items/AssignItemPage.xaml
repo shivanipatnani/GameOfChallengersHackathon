@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="GameOfChallengers.Views.Items.AssignItemPage">
+	<ContentPage.Content>
+
+    <StackLayout>
+            <ScrollView>
+
+             <Label Text="Assign Item"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+                <StackLayout>
+               
+                    <ListView x:Name="TeamListView" 
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadDataCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10"  HorizontalOptions="Center">
+                                <Image Source="{Binding Data.ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                <Label Text="{Binding Data.Name}" 
+                                       LineBreakMode="NoWrap" 
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       FontSize="16" />
+                               <Picker Title="Assign Items to Character" 
+                                       ItemsSource="{Binding Dataset}"
+                                       x:Name="TeamPicker"
+                                       ItemDisplayBinding="{Binding Name}"
+                                       SelectedItem="{Binding Name, Mode=TwoWay}" />
+                           </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>   
+                    
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

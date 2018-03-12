@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.AboutPage"
+             xmlns:vm="clr-namespace:GameOfChallengers.ViewModels;"
+             Title="{Binding Title}">
+    
+     <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+    <StackLayout
+        Orientation="Vertical">
+
+        <StackLayout 
+            HorizontalOptions="Center" 
+            VerticalOptions="Start"
+            Orientation="Vertical"
+            >
+       
+            <Label 
+            FontSize="Large"
+            Text="About"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+
+            <Label 
+            FontSize="Medium"
+            Text="designed and developed by"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+
+             <Label 
+            FontSize="Large"
+            Text="Game Of Challengers"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+
+            <Label 
+            FontSize="Medium"
+            Text="Asa Davidson"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+                
+            <Label 
+            FontSize="Medium"
+            Text="Kanika Mishra"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+
+
+            <Label 
+            FontSize="Medium"
+            Text="Shivani Patnani"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" />
+                
+        </StackLayout>
+
+        <StackLayout 
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="StartAndExpand" 
+                Orientation="Vertical"
+                >
+
+            <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                <Label 
+                FontSize="Small"
+                Text="Use Mock DataStore"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+
+                <Switch 
+                x:Name="SettingDataSource"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnToggled"/>
+            </StackLayout>
+
+            <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                <Label 
+                FontSize="Small"
+                Text="Clear Database"
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                />
+
+                <Button  
+                    Text="Clear" 
+                    Clicked="ClearDatabase_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+            </StackLayout>
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+
+                    <Label 
+                    FontSize="Small"
+                    Text="Server Items"
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"/>
+
+                    <Button  
+                    Text="Get" 
+                    Clicked="GetItems_Command" 
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="Black" />
+
+                    <Button  
+                    Text="Post" 
+                    Clicked="GetItemsPost_Command" 
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="Black" />
+            </StackLayout>
+
+            </StackLayout>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

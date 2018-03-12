@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Character.DeleteCharacter">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Delete Character?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <ScrollView VerticalOptions="StartAndExpand">
+                    <StackLayout>
+                        <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Name}" FontSize="Small" />
+                        <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                        <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                        <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                        <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Level}" FontSize="Small" />
+                        <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.XP}" FontSize="Small" />
+                        <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                        <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Yes" Clicked="Delete_Clicked" />
+                    <Button Text="No" Clicked="Cancel_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

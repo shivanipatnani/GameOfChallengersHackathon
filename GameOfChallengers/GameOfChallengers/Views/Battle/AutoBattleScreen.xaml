@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="GameOfChallengers.Views.Battle.AutoBattleScreen">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Auto Battle Screen" 
+                   FontAttributes="Bold" 
+                   FontSize="Medium"  
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center"/>
+            <ScrollView >
+                <Frame BackgroundColor="LightBlue">
+                    <Label Text="Messages displayed here"
+                           TextColor="Blue"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+            </ScrollView>
+            <Button Text="Score"
+                    BackgroundColor="Crimson"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="Score_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

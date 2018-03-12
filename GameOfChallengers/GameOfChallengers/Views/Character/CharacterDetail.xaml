@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Character.CharacterDetail">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Character Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <ScrollView VerticalOptions="StartAndExpand">
+                    <StackLayout>
+                        <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                        <Label Text="Name" FontSize="Small" FontAttributes="Bold"   />
+                        <Label Text="{Binding Data.Name}" FontSize="Small"  />
+                        <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                        <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                        <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                        <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Level}" FontSize="Small" />
+                        <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.XP}" FontSize="Small" />
+                        <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                        <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                    </StackLayout>
+                </ScrollView>
+                <Button Text="Edit" Clicked="Edit_Clicked" />
+                <Button Text="Delete" Clicked="Delete_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

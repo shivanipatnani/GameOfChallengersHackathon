@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Monsters.MonsterDetailPage"
+             Title="{Binding Title}" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked"/>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
+                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+
+                <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                    <Label Text="Name : " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Name}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="Start">
+                    <Label Text="Attack : " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Attack}" 
+                   FontSize="Medium" 
+                   HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                    <Label Text="Defense : " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Defense}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                    <Label Text="Speed : " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Speed}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+                </StackLayout>
+                <Button Text="Edit" Clicked="Edit_Clicked" />
+                <Button Text="Delete" Clicked="Delete_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
