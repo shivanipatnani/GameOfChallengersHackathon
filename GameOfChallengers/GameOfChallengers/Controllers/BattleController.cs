@@ -121,7 +121,7 @@ namespace GameOfChallengers.Controllers
                         }
 
                         int hit = turn.Attack(character, target);
-                        Debug.WriteLine(hit.ToString());
+                        
                         if (GameGlobals.AllowRoundHealing)
                         {
                             if(character.CurrHealth < (character.MaxHealth * .2))
@@ -192,7 +192,7 @@ namespace GameOfChallengers.Controllers
                         }
                         
                         int hit = turn.Attack(monster, target);
-                        Debug.WriteLine(hit.ToString());
+                        
                         if (hit > 0)
                         {
                             int damageToDo = turn.DamageToDo(monster);

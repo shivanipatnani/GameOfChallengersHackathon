@@ -16,7 +16,6 @@ namespace GameOfChallengers.Views
         public AboutPage()
         {
             InitializeComponent();
-            ValueForRoll.Text = "";
             BindingContext = ValueForRoll;
             SettingDataSource.IsToggled = true;
             DebugSetting.IsToggled = true;
@@ -88,7 +87,7 @@ namespace GameOfChallengers.Views
 
         private void set_roll(object sender, ToggledEventArgs e)
         {
-            //GameGlobals.RollValue = Convert.ToInt32(ValueForRoll);
+            GameGlobals.RollValue = Convert.ToInt32(ValueForRoll.Text);
         }
         private void Switch_OnToggled(object sender, ToggledEventArgs e)
         {
