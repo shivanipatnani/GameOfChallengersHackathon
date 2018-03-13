@@ -94,6 +94,15 @@ namespace GameOfChallengers.Views
 
         }
 
+        private void Miracle(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+                GameGlobals.MiracleMax = true;
+            else
+                GameGlobals.MiracleMax = false;
+
+        }
+
         private void set_roll(object sender, ToggledEventArgs e)
         {
             GameGlobals.RollValue = Convert.ToInt32(ValueForRoll.Text);

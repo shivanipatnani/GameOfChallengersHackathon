@@ -28,6 +28,7 @@ namespace GameOfChallengers.Controllers
         {
             TeamViewModel Team = TeamViewModel.Instance;
             BattleController battle = new BattleController();
+            int Miracle = 1;
             while (Team.Dataset.Count > 0)
             {
                 round++;
@@ -110,7 +111,7 @@ namespace GameOfChallengers.Controllers
                     {
                         Debug.WriteLine(message);
                     }
-                    GameScore = battle.AutoBattle(GameScore,Potions);
+                    GameScore = battle.AutoBattle(GameScore, Potions, Miracle);
                     GameScore.Auto = true;
                    
                    

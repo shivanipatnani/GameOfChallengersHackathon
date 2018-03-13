@@ -14,5 +14,6 @@ namespace GameOfChallengers.Models
         public static bool Debug = false;
         public static bool AllowRoundHealing = false;
         public static bool EnableRandomBadThings = false;
+        public static bool MiracleMax = false;
     }
 }

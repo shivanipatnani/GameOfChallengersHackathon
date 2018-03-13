@@ -66,7 +66,7 @@ namespace GameOfChallengers.Controllers
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
         }
 
-        public Score AutoBattle(Score score , int Potions)
+        public Score AutoBattle(Score score , int Potions, int miracle)
         {
             //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
@@ -255,6 +255,18 @@ namespace GameOfChallengers.Controllers
                                 Debug.WriteLine(monster.Name + " critical hit " + target.Name);
                             }
                             bool characterAlive = CC.TakeDamage(target, damageToDo);
+                            if(GameGlobals.MiracleMax == true)
+                            {
+                                if (!characterAlive && miracle > 0)
+                                {
+                                    target.Alive = true;
+                                    target.CurrHealth = target.MaxHealth;
+                                    miracle--;
+                                    Debug.WriteLine("Miracle Max has revived " + target.Name);
+                                    GameGlobals.MiracleMax = false;
+                                    characterAlive = target.Alive;
+                                }
+                            }
                             if (!characterAlive)
                             {
                                 message = "Character dead ";
