@@ -119,7 +119,9 @@ namespace GameOfChallengers.Controllers
                         {
                             continue;
                         }
+
                         int hit = turn.Attack(character, target);
+                        Debug.WriteLine(hit.ToString());
                         if (GameGlobals.AllowRoundHealing)
                         {
                             if(character.CurrHealth < (character.MaxHealth * .2))
@@ -133,9 +135,15 @@ namespace GameOfChallengers.Controllers
                                 }
                             }
                         }
-                        if (hit == 1)
+                        if (hit > 0)
                         {
+
                             int damageToDo = turn.DamageToDo(character);
+                            if(hit == 2)
+                            {
+                                damageToDo = damageToDo * 2;
+                                Debug.WriteLine(character.Name + " critical hit " + target.Name);
+                            }
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
                             CC.TestForLevelUp(character, xpToGive);
@@ -184,9 +192,15 @@ namespace GameOfChallengers.Controllers
                         }
                         
                         int hit = turn.Attack(monster, target);
-                        if (hit == 1)
+                        Debug.WriteLine(hit.ToString());
+                        if (hit > 0)
                         {
                             int damageToDo = turn.DamageToDo(monster);
+                            if (hit == 2)
+                            {
+                                damageToDo = damageToDo * 2;
+                                Debug.WriteLine(monster.Name + " critical hit " + target.Name);
+                            }
                             bool characterAlive = CC.TakeDamage(target, damageToDo);
                             if (!characterAlive)
                             {

@@ -22,11 +22,7 @@ namespace GameOfChallengers.Controllers
 
         public int Attack(Creature creature1, Creature creature2)
         {
-            if(GameGlobals.HitValue >= 0)
-            {
-                
-                return GameGlobals.HitValue;
-            }
+            
             int score1, score2 = 0;
             //bool succeeded = false;
             int hit = 0;
@@ -35,13 +31,19 @@ namespace GameOfChallengers.Controllers
             //run the attack of creature1 on creature2, return if it succeeded or not
             //attack is successful(true) if creature1 score > creature2 score
             int rollValue = roll.Next(1, 21);
+
             if (GameGlobals.DisableRandomNumbers)
             {
                 rollValue = 19;
             }
-            if(rollValue == 1)
+            if (GameGlobals.RollValue >= 0)
             {
-                if (GameGlobals.ForceMiss)
+
+                rollValue = GameGlobals.RollValue;
+            }
+            if (rollValue == 1)
+            {
+                if (GameGlobals.EnableCriticalMiss == true)
                 {
                     return -1;
                 }
@@ -49,7 +51,7 @@ namespace GameOfChallengers.Controllers
             }
             if(rollValue == 20)
             {
-                if (GameGlobals.ForceHit)
+                if (GameGlobals.EnableCriticalHit == true)
                 {
                     return 2;
                 }

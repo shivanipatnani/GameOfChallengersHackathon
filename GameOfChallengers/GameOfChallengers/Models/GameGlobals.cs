@@ -7,10 +7,10 @@ namespace GameOfChallengers.Models
     public static class GameGlobals
     {
         public static string PlayerName = "Enter Your Name";
-        public static int HitValue = -1;
+        public static int RollValue = -1;
         public static bool DisableRandomNumbers = false;
-        public static bool ForceMiss = false;
-        public static bool ForceHit = false;
+        public static bool EnableCriticalMiss = false;
+        public static bool EnableCriticalHit = false;
         public static bool Debug = false;
         public static bool AllowRoundHealing = false;
     }

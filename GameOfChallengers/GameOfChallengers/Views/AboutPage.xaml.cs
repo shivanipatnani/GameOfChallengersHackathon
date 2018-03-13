@@ -16,8 +16,8 @@ namespace GameOfChallengers.Views
         public AboutPage()
         {
             InitializeComponent();
-            ValueForHit.Text = "";
-            BindingContext = ValueForHit;
+            ValueForRoll.Text = "";
+            BindingContext = ValueForRoll;
             SettingDataSource.IsToggled = true;
             DebugSetting.IsToggled = true;
             ServerPost.IsToggled = false;
@@ -63,9 +63,9 @@ namespace GameOfChallengers.Views
         private void Switch_OnMiss(object sender, ToggledEventArgs e)
         {
             if (e.Value == true)
-                GameGlobals.ForceMiss = true;
+                GameGlobals.EnableCriticalMiss = true;
             else
-                GameGlobals.ForceMiss = false;
+                GameGlobals.EnableCriticalMiss = false;
 
         }
 
@@ -73,9 +73,9 @@ namespace GameOfChallengers.Views
         private void Switch_OnHit(object sender, ToggledEventArgs e)
         {
             if (e.Value == true)
-                GameGlobals.ForceHit = true;
+                GameGlobals.EnableCriticalHit = true;
             else
-                GameGlobals.ForceHit = false;
+                GameGlobals.EnableCriticalHit = false;
         }
         private void Round_Healing(object sender, ToggledEventArgs e)
         {
@@ -86,7 +86,10 @@ namespace GameOfChallengers.Views
 
         }
 
-
+        private void set_roll(object sender, ToggledEventArgs e)
+        {
+            //GameGlobals.RollValue = Convert.ToInt32(ValueForRoll);
+        }
         private void Switch_OnToggled(object sender, ToggledEventArgs e)
         {
             // This will change out the DataStore to be the Mock Store if toggled on, or the SQL if off.

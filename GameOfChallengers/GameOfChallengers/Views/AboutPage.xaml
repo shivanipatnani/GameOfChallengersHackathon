@@ -187,17 +187,18 @@
 
                 <Label 
                FontSize="Small"
-                Text=" Set Value For Hit" 
+                Text=" Set Value For all hit dice rolls" 
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />
-                        
-                <Entry 
-                 x:Name="ValueForHit"
+                    
+                    
+                <Entry x:Name="ValueForRoll"
                  Text=""
                  FontSize="Small" 
                  HorizontalOptions="Start"
                  VerticalOptions="Center"/>
+                  <Button Text="Set roll value" Clicked="set_roll"></Button>
                         
                    </StackLayout> 
                <StackLayout
@@ -206,7 +207,7 @@
 
                  <Label 
                 FontSize="Small"
-                Text="Force Miss"
+                Text="Enable Critical Miss"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />       
@@ -225,7 +226,7 @@
 
                         <Label 
                 FontSize="Small"
-                Text="Force Hit"
+                Text="Enable Critical Hit"
                 HorizontalTextAlignment="Start"
                 HorizontalOptions="Start"
                 />       
