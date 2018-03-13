@@ -121,7 +121,7 @@ namespace GameOfChallengers.Controllers
                         }
 
                         int hit = turn.Attack(character, target);
-                        
+                        //Debug.WriteLine(hit.ToString());
                         if (GameGlobals.AllowRoundHealing)
                         {
                             if(character.CurrHealth < (character.MaxHealth * .2))
@@ -173,6 +173,59 @@ namespace GameOfChallengers.Controllers
 
                             }
                         }
+                        if(hit == -1)
+                        {
+                            Random rand = new Random();
+                            int roll = rand.Next(1, 11);
+                            if (GameGlobals.DisableRandomNumbers)
+                            {
+                                roll = 10;
+                            }
+                            if(roll == 1)
+                            {
+                                character.RHandItemID = null;
+                            }else if(roll >= 2 && roll <= 4)
+                            {
+                                if(character.RHandItemID != null)
+                                {
+                                    var items = ItemsViewModel.Instance.Dataset;
+                                    var item = items.Where(a => a.Id == character.RHandItemID).FirstOrDefault();
+                                    if(item != null)
+                                    {
+                                        ItemPool.Add(item);
+                                    }
+                                    character.RHandItemID = null;
+                                }
+                                
+                            }
+                            else if(roll == 5 || roll == 6)
+                            {
+                                var allItems = character.GetItemIDs();//get all of the character's items' ids
+                                if(allItems.Count > 0)
+                                {
+                                    int index = rand.Next(allItems.Count);//get a random index for getting an item id
+                                    if (GameGlobals.DisableRandomNumbers)
+                                    {
+                                        index = 0;
+                                    }
+                                    if(allItems.Count > index)//check for a bad index
+                                    {
+                                        string itemID = allItems[index];
+                                        var items = ItemsViewModel.Instance.Dataset;
+                                        var item = items.Where(a => a.Id == itemID).FirstOrDefault();
+                                        if (item != null)//find the item and make sure it is safe to add to the item pool
+                                        {
+                                            ItemPool.Add(item);
+                                        }
+                                        character.DropOneItem(itemID);
+                                    }
+                                    
+                                }
+                                
+                            }
+                            Debug.WriteLine("Critical miss, case " + roll.ToString());
+                            
+                        }
 
                     }
                     else
@@ -192,7 +245,7 @@ namespace GameOfChallengers.Controllers
                         }
                         
                         int hit = turn.Attack(monster, target);
-                        
+                        //Debug.WriteLine(hit.ToString());
                         if (hit > 0)
                         {
                             int damageToDo = turn.DamageToDo(monster);
@@ -222,6 +275,98 @@ namespace GameOfChallengers.Controllers
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
                             }
+                        }
+                        if (hit == -1)
+                        {
+                            Random rand = new Random();
+                            int roll = rand.Next(1, 11);
+                            if (GameGlobals.DisableRandomNumbers)
+                            {
+                                roll = 10;
+                            }
+                            if (roll == 1)
+                            {
+                                monster.RHandItemID = null;
+                            }
+                            else if (roll >= 2 && roll <= 4)
+                            {
+                                if (monster.RHandItemID != null)
+                                {
+                                    var items = ItemsViewModel.Instance.Dataset;
+                                    var item = items.Where(a => a.Id == monster.RHandItemID).FirstOrDefault();
+                                    if (item != null)
+                                    {
+                                        ItemPool.Add(item);
+                                    }
+                                    monster.RHandItemID = null;
+                                }
+                                else
+                                {
+                                    var items = ItemsViewModel.Instance.Dataset;
+                                    int randItem = rand.Next(items.Count);//find the random item to add to the pool
+                                    if (GameGlobals.DisableRandomNumbers)
+                                    {
+                                        randItem = 0;
+                                    }
+                                    Item item = new Item();
+                                    if (items.Count > randItem)
+                                    {
+                                        item.Update(items[randItem]);
+                                    }
+                                    
+                                    if (item != null)
+                                    {
+                                        ItemPool.Add(item);
+                                    }
+                                }
+
+                            }
+                            else if (roll == 5 || roll == 6)
+                            {
+                                var allItems = monster.GetItemIDs();//get all of the character's items' ids
+                                if (allItems.Count > 0)
+                                {
+                                    int index = rand.Next(allItems.Count);//get a random index for getting an item id
+                                    if (GameGlobals.DisableRandomNumbers)
+                                    {
+                                        index = 0;
+                                    }
+                                    if (allItems.Count > index)//check for a bad index
+                                    {
+                                        string itemID = allItems[index];
+                                        var items = ItemsViewModel.Instance.Dataset;
+                                        var item = items.Where(a => a.Id == itemID).FirstOrDefault();
+                                        if (item != null)//find the item and make sure it is safe to add to the item pool
+                                        {
+                                            ItemPool.Add(item);
+                                        }
+                                        monster.DropOneItem(itemID);
+                                    }
+
+                                }
+                                if(allItems.Count == 0)
+                                {
+                                    var items = ItemsViewModel.Instance.Dataset;
+                                    int randItem = rand.Next(items.Count);//find the random item to add to the pool
+                                    if (GameGlobals.DisableRandomNumbers)
+                                    {
+                                        randItem = 0;
+                                    }
+                                    Item item = new Item();
+                                    if (items.Count > randItem)
+                                    {
+                                        item.Update(items[randItem]);
+                                    }
+
+                                    if (item != null)
+                                    {
+                                        ItemPool.Add(item);
+                                    }
+                                }
+
+                            }
+                            Debug.WriteLine("Critical miss, case " + roll.ToString());
+
                         }
                     }
                 }

@@ -140,9 +140,39 @@ namespace GameOfChallengers.Models
             return itemIds;
         }
 
+        public void DropOneItem(string id)
+        {
+            if (HeadItemID == id)
+            {
+                HeadItemID = null;
+            }
+            if (BodyItemID == id)
+            {
+                BodyItemID = null;
+            }
+            if (FeetItemID == id)
+            {
+                FeetItemID = null;
+            }
+            if (LHandItemID == id)
+            {
+                LHandItemID = null;
+            }
+            if (RHandItemID == id)
+            {
+                RHandItemID = null;
+            }
+            if (LFingerItemID == id)
+            {
+                LFingerItemID = null;
+            }
+            if (RFingerItemID == id)
+            {
+                RFingerItemID = null;
+            }
+        }
 
         
-   
 
         public string FormatOutput()
         {
@@ -164,71 +194,7 @@ namespace GameOfChallengers.Models
             myReturn += " , Unique Item : " + UniqueOutput;
             return myReturn;
         }
-        #region GetAttributes
-        // Get Attributes
-
-        // Get Attack
-        public int GetAttack()
-        {
-            // Base Attack
-            var myReturn = Attribute.Attack;
-
-            return myReturn;
-        }
-
-        // Get Speed
-        public int GetSpeed()
-        {
-            // Base value
-            var myReturn = Attribute.Speed;
-
-            return myReturn;
-        }
-
-        // Get Defense
-        public int GetDefense()
-        {
-            // Base value
-            var myReturn = Attribute.Defense;
-
-            return myReturn;
-        }
-
-        // Get Max Health
-        public int GetHealthMax()
-        {
-            // Base value
-            var myReturn = Attribute.MaxHealth;
-
-            return myReturn;
-        }
-
-        // Get Current Health
-        public int GetHealthCurrent()
-        {
-            // Base value
-            var myReturn = Attribute.CurrentHealth;
-
-            return myReturn;
-        }
-
-        // Get the Level based damage
-        // Then add in the monster damage
-        public int GetDamage()
-        {
-            var myReturn = 0; // = GetLevelBasedDamage();  BaseDamage Already calculated in
-            myReturn += Damage;
-
-            return myReturn;
-        }
-
-        // Get the Level based damage
-        // Then add the damage for the primary hand item as a Dice Roll
-        public int GetDamageRollValue()
-        {
-            return GetDamage();
-        }
-        #endregion GetAttributes
+        
         #region Items
         // Gets the unique item (if any) from this monster when it dies...
         public Item GetUniqueItem()

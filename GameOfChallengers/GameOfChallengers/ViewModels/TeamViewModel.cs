@@ -153,6 +153,7 @@ namespace GameOfChallengers.ViewModels
                 foreach (var data in Dataset)
                 {
                     data.RHandItemID = "bow";
+                    data.LHandItemID = "bow";
                 }
             }
 
