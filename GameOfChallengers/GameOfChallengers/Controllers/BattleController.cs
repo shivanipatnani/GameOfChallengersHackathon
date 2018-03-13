@@ -131,7 +131,7 @@ namespace GameOfChallengers.Controllers
                                 hasItem = true;
                             }
                             bool wantsTo = false;
-                            if (target.CurrHealth > (1 * turn.DamageToDo(character)))
+                            if (target.CurrHealth > (5 * turn.DamageToDo(character)))//5 must be set to 1 to see in autobattle
                             {
                                 wantsTo = true;
                             }
