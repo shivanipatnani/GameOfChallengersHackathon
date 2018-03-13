@@ -25,8 +25,12 @@ namespace GameOfChallengers.Controllers
             var items = ItemsViewModel.Instance.Dataset;
             for (int i=0; i<numOfItems; i++)
             {
-                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                Dropped.Add(item);
+                if (itemIds.Count > i)
+                {
+                    var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                    Dropped.Add(item);
+                }
+                
             }
             int dropUnique = rand.Next(5);
             if(dropUnique == 1)

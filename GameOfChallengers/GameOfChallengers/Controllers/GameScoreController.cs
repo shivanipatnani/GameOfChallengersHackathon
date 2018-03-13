@@ -45,7 +45,7 @@ namespace GameOfChallengers.Controllers
                     int dateSeed = DateTime.Now.Millisecond;
                     Random rand = new Random(dateSeed);
                     Volcano = rand.Next(1, 21);
-                    Volcano = 4;
+                    //Volcano = 4; //to force one of the effects
                     if (GameGlobals.DisableRandomNumbers)
                     {
                         Volcano = 20;
