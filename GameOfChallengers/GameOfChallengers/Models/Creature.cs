@@ -30,6 +30,7 @@ namespace GameOfChallengers.Models
         public string AttributeString { get; set; }
         public string UniqueItem { get; set; }
         public int Damage { get; set; }
+        public bool CanFocusAttack { get; set; }
 
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
@@ -57,6 +58,7 @@ namespace GameOfChallengers.Models
             LFingerItemID = null;
             RFingerItemID = null;
             Attribute = new AttributeBase();
+            CanFocusAttack = true;
 
         }
 
@@ -89,6 +91,7 @@ namespace GameOfChallengers.Models
             ImageURI = newData.ImageURI;
             AttributeString = newData.AttributeString;
             Attribute = new AttributeBase(newData.AttributeString);
+            CanFocusAttack = newData.CanFocusAttack;
 
         }
 

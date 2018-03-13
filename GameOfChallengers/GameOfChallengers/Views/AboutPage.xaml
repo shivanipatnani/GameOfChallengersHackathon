@@ -268,9 +268,24 @@
                 HorizontalOptions="Center"
                 Toggled="Volcano"/>
                     </StackLayout>
-                     
-                     
-                     <StackLayout
+
+                    <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                        <Label 
+                FontSize="Small"
+                Text="Focused Attack"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+                        <Switch 
+                x:Name="FocusedAttack"
+                HorizontalOptions="Center"
+                Toggled="Focused"/>
+                    </StackLayout>
+
+                    <StackLayout
                  HorizontalOptions="Start"
                 Orientation="Horizontal">
 

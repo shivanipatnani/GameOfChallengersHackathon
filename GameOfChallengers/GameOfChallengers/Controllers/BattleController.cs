@@ -122,6 +122,25 @@ namespace GameOfChallengers.Controllers
 
                         int hit = turn.Attack(character, target);
                         //Debug.WriteLine(hit.ToString());
+                        if(GameGlobals.FocusedAttack == true)
+                        {
+                            bool hasItem = false;
+                            List<string> ids = character.GetItemIDs();
+                            if (ids.Count > 0)
+                            {
+                                hasItem = true;
+                            }
+                            bool wantsTo = false;
+                            if (target.CurrHealth > (1 * turn.DamageToDo(character)))
+                            {
+                                wantsTo = true;
+                            }
+                            if (character.CanFocusAttack && hasItem && wantsTo)
+                            {
+                                hit = 3;
+                                character.CanFocusAttack = false;
+                            }
+                        }
                         if (GameGlobals.AllowRoundHealing)
                         {
                             if(character.CurrHealth < (character.MaxHealth * .2))
@@ -139,10 +158,50 @@ namespace GameOfChallengers.Controllers
                         {
 
                             int damageToDo = turn.DamageToDo(character);
-                            if(hit == 2)
+                            if(hit == 2)//critical hit
                             {
                                 damageToDo = damageToDo * 2;
                                 Debug.WriteLine(character.Name + " critical hit " + target.Name);
+                            }
+                            if (hit == 3)//focused hit
+                            {
+                                Item lowValue = null;
+                                int lowest = 1000;
+                                List<string> itemIds = character.GetItemIDs();
+                                var items = ItemsViewModel.Instance.Dataset;
+                                for(int j=0; j<itemIds.Count; j++)
+                                {
+                                    var currItem = items.Where(a => a.Id == itemIds[j]).FirstOrDefault();
+                                    int newLowest = currItem.Value;
+                                    if (lowest > newLowest)
+                                    {
+                                        lowest = newLowest;
+                                        lowValue = currItem;
+                                    }
+                                }
+                                character.DropOneItem(lowValue.Id);
+                                damageToDo = damageToDo * 10;
+                                bool monsterAliveAfterFocus;
+                                MC.TakeDamage(target, damageToDo);
+                                Debug.WriteLine(character.Name + " performed a Focused Attack and lost item " + lowValue.Name);
+                                monsterAliveAfterFocus = target.Alive;
+                                if (monsterAliveAfterFocus == false)
+                                {
+                                    message = "Monster dead ";
+                                    Debug.WriteLine(message);
+                                    screen.BattleMessages(message);
+
+                                    TurnOrder.Remove(target);
+                                    //score.TotalMonstersKilled.Add(target);
+                                    CurrMonsters.Dataset.Remove(target);
+                                    GameBoardRemove(target);
+
+                                    message = "Monster Removed :" + target.Name;
+                                    Debug.WriteLine(message);
+                                    screen.BattleMessages(message);
+
+                                }
+                                continue;
                             }
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;

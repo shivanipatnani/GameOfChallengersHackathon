@@ -36,6 +36,10 @@ namespace GameOfChallengers.Controllers
                 int Volcano = 20;
                 string message = "";
                 Debug.WriteLine("New Round " + round.ToString());
+                foreach(var character in Team.Dataset)
+                {
+                    character.CanFocusAttack = true;
+                }
                 if(GameGlobals.EnableRandomBadThings == true)
                 {
                     Random rand = new Random();

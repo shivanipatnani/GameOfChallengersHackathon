@@ -103,6 +103,15 @@ namespace GameOfChallengers.Views
 
         }
 
+        private void Focused(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+                GameGlobals.FocusedAttack = true;
+            else
+                GameGlobals.FocusedAttack = false;
+
+        }
+
         private void set_roll(object sender, ToggledEventArgs e)
         {
             GameGlobals.RollValue = Convert.ToInt32(ValueForRoll.Text);

@@ -15,5 +15,6 @@ namespace GameOfChallengers.Models
         public static bool AllowRoundHealing = false;
         public static bool EnableRandomBadThings = false;
         public static bool MiracleMax = false;
+        public static bool FocusedAttack = false;
     }
 }
