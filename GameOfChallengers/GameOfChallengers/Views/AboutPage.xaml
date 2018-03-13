@@ -253,6 +253,22 @@
                     </StackLayout>
 
 
+                    <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                        <Label 
+                FontSize="Small"
+                Text="Enable Random Bad Things"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+                        <Switch 
+                x:Name="EnableRandomBadThings"
+                HorizontalOptions="Center"
+                Toggled="Volcano"/>
+                    </StackLayout>
+
                 </StackLayout>
                 
             </StackLayout>

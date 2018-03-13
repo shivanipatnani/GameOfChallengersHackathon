@@ -32,10 +32,84 @@ namespace GameOfChallengers.Controllers
             {
                 round++;
                 int Potions = 6;
-                Debug.WriteLine("New Round");
+                int Volcano = 20;
+                string message = "";
+                Debug.WriteLine("New Round " + round.ToString());
+                if(GameGlobals.EnableRandomBadThings == true)
+                {
+                    Random rand = new Random();
+                    Volcano = rand.Next(1, 21);
+                    Volcano = 4;
+                    if (GameGlobals.DisableRandomNumbers)
+                    {
+                        Volcano = 20;
+                    }
+                    if(Volcano == 1)
+                    {
+                        foreach (var character in Team.Dataset)
+                        {
+                            character.CurrHealth = character.MaxHealth;
+                        }
+                        message = "Volcano erupted, characters feel stronger";
+                    }
+                    if(Volcano == 2)
+                    {
+                        foreach (var character in Team.Dataset)
+                        {
+                            double damage = character.CurrHealth * .2;
+                            character.CurrHealth -= (int)Math.Ceiling(damage);
+                            if(character.CurrHealth < 1)
+                            {
+                                character.CurrHealth = 1;
+                            }
+                        }
+                        message = "Volcano erupted, characters are sickened by the fumes";
+                    }
+                    if(Volcano > 4)
+                    {
+                        message = "Volcano did not explode";
+                    }
+                }
                 if (auto)
                 {
                     battle.SetBattleController(round);
+                    if (Volcano == 3)
+                    {
+                        foreach (var monster in battle.CurrMonsters.Dataset)
+                        {
+                            double damage = monster.CurrHealth * .2;
+                            monster.CurrHealth -= (int)Math.Ceiling(damage);
+                            if (monster.CurrHealth < 1)
+                            {
+                                monster.CurrHealth = 1;
+                            }
+                        }
+                        message = "Volcano erupted, falling ash hurts the monsters";
+                    }
+                    if(Volcano == 4)
+                    {
+                        MonsterController mc = new MonsterController();
+                        Creature strongestMonster = null;
+                        int strongest = 0;
+                        foreach (var monster in battle.CurrMonsters.Dataset)
+                        {
+                            int newStrongest = monster.CurrHealth + mc.GetBaseAttack(monster);
+                            if (strongest < newStrongest)
+                            {
+                                strongest = newStrongest;
+                                strongestMonster = monster;
+                            }
+                        }
+                        
+                        message = "Volcano erupted, " + strongestMonster.Name + " ran to watch";
+                        battle.CurrMonsters.Dataset.Remove(strongestMonster);
+                        battle.TurnOrder.Remove(strongestMonster);
+                        battle.GameBoardRemove(strongestMonster);
+                    }
+                    if(GameGlobals.EnableRandomBadThings == true)
+                    {
+                        Debug.WriteLine(message);
+                    }
                     GameScore = battle.AutoBattle(GameScore,Potions);
                     GameScore.Auto = true;
                    

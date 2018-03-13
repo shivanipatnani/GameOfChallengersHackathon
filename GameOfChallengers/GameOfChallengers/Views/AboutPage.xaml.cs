@@ -84,6 +84,15 @@ namespace GameOfChallengers.Views
                 GameGlobals.AllowRoundHealing = false;
 
         }
+        
+        private void Volcano(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+                GameGlobals.EnableRandomBadThings = true;
+            else
+                GameGlobals.EnableRandomBadThings = false;
+
+        }
 
         private void set_roll(object sender, ToggledEventArgs e)
         {

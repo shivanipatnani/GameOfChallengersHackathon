@@ -13,7 +13,7 @@ namespace GameOfChallengers.Controllers
 {
    public class BattleController
     {
-        MonstersListViewModel CurrMonsters;
+        public MonstersListViewModel CurrMonsters;
         TeamViewModel team;
         public List<Creature> TurnOrder = new List<Creature>();
         public List<Item> ItemPool = new List<Item>();
@@ -467,7 +467,7 @@ namespace GameOfChallengers.Controllers
             return GetClosestEnemy(info);
         }
 
-        private void GameBoardRemove(Creature creature)
+        public void GameBoardRemove(Creature creature)
         {
             CreatureLocInfo info = GetLocInfo(creature);
             GameBoard[info.row, info.col] = null;

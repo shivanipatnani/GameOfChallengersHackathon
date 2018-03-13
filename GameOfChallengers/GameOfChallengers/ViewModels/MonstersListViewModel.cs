@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace GameOfChallengers.ViewModels
 {
-    class MonstersListViewModel : BaseViewModel
+    public class MonstersListViewModel : BaseViewModel
     {
         private static int round = 0;
 
