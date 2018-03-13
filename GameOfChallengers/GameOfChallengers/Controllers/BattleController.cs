@@ -66,7 +66,7 @@ namespace GameOfChallengers.Controllers
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
         }
 
-        public Score AutoBattle(Score score)
+        public Score AutoBattle(Score score , int Potions)
         {
             //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
@@ -78,21 +78,26 @@ namespace GameOfChallengers.Controllers
             Debug.WriteLine(message);
             while (CurrMonsters.Dataset.Count > 0)
             {
+               
+                
                 if(team.Dataset.Count <= 0)
                 {
                     break;
                 }
                 for (int i = 0; i < TurnOrder.Count; i++)
                 {
-                   
 
-                    
+
+
                     //screen.BattleMessages(message);
 
                     //.WriteLine(Text);
-                    
+
                     //screen.BattleMessages(message);
 
+                    message = "New Turn :" + TurnOrder[i].Name;
+                    Debug.WriteLine(message);
+                    screen.BattleMessages(message);
 
                     TurnController turn = new TurnController();
                     turns++;
@@ -102,10 +107,7 @@ namespace GameOfChallengers.Controllers
                         Creature character = TurnOrder[i];
                         //int loc = GetNewLoc(character, GameBoard);
                         //GameBoard = turn.Move(character, loc, GameBoard);
-                        message = "New Turn :" + TurnOrder[i].Name;
-                        Debug.WriteLine(message);
-                        screen.BattleMessages(message);
-
+                       
                         Creature target = AutoTarget(character);//get a monster target for the character
                         if(target == null)
                         {
@@ -118,6 +120,19 @@ namespace GameOfChallengers.Controllers
                             continue;
                         }
                         int hit = turn.Attack(character, target);
+                        if (GameGlobals.AllowRoundHealing)
+                        {
+                            if(character.CurrHealth < (character.MaxHealth * .2))
+                            {
+                                if (Potions > 0)
+                                {
+                                    character.CurrHealth = character.MaxHealth;
+                                    Potions--;
+                                    Debug.WriteLine("Potion used, Potions Left " + Potions);
+                                    hit = 0;
+                                }
+                            }
+                        }
                         if (hit == 1)
                         {
                             int damageToDo = turn.DamageToDo(character);
@@ -164,8 +179,10 @@ namespace GameOfChallengers.Controllers
                         }
                         if (!CanHit(monster, target))
                         {
+
                             continue;
                         }
+                        
                         int hit = turn.Attack(monster, target);
                         if (hit == 1)
                         {

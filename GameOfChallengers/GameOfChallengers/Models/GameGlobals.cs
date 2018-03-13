@@ -11,5 +11,7 @@ namespace GameOfChallengers.Models
         public static bool DisableRandomNumbers = false;
         public static bool ForceMiss = false;
         public static bool ForceHit = false;
+        public static bool Debug = false;
+        public static bool AllowRoundHealing = false;
     }
 }

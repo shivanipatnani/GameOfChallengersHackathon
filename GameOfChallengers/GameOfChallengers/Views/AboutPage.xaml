@@ -235,8 +235,24 @@
                 Toggled="Switch_OnHit"/>
                         </StackLayout>
 
-                    
-            </StackLayout>
+                    <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                        <Label 
+                FontSize="Small"
+                Text="AllowRoundHealing"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+                        <Switch 
+                x:Name="AllowRoundHealing"
+                HorizontalOptions="Center"
+                Toggled="Round_Healing"/>
+                    </StackLayout>
+
+
+                </StackLayout>
                 
             </StackLayout>
     </StackLayout>

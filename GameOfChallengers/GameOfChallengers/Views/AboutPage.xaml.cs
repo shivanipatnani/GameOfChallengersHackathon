@@ -30,7 +30,7 @@ namespace GameOfChallengers.Views
 
             if (e.Value == true)
             {
-
+                GameGlobals.Debug = true;
                 MockDatastore.IsVisible = true;
                 ClearDatabase.IsVisible = true;
                 ServerItem.IsVisible = true;
@@ -39,7 +39,7 @@ namespace GameOfChallengers.Views
             }
             else
             {
-
+                GameGlobals.Debug = false;
                 MockDatastore.IsVisible = false;
                 ClearDatabase.IsVisible = false;
                 ServerItem.IsVisible = false;
@@ -76,6 +76,14 @@ namespace GameOfChallengers.Views
                 GameGlobals.ForceHit = true;
             else
                 GameGlobals.ForceHit = false;
+        }
+        private void Round_Healing(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+                GameGlobals.AllowRoundHealing = true;
+            else
+                GameGlobals.AllowRoundHealing = false;
+
         }
 
 

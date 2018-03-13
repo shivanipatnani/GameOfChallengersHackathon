@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace GameOfChallengers.Controllers
 {
@@ -30,11 +31,16 @@ namespace GameOfChallengers.Controllers
             while (Team.Dataset.Count > 0)
             {
                 round++;
+                int Potions = 6;
+                Debug.WriteLine("New Round");
                 if (auto)
                 {
                     battle.SetBattleController(round);
-                    GameScore = battle.AutoBattle(GameScore);
+                    GameScore = battle.AutoBattle(GameScore,Potions);
                     GameScore.Auto = true;
+                   
+                   
+
                 }
                 else
                 {
