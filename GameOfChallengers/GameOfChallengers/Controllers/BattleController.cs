@@ -66,7 +66,7 @@ namespace GameOfChallengers.Controllers
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
         }
 
-        public Score AutoBattle(Score score , int Potions, int miracle)
+        public Score AutoBattle(Score score , int round, int Potions, int miracle)
         {
             //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
@@ -230,11 +230,90 @@ namespace GameOfChallengers.Controllers
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
+                                if(GameGlobals.MonsterHandGrenade == true && GameGlobals.Grenade == true)
+                                {
+                                    GameGlobals.Grenade = false;
+                                    int dateSeed = DateTime.Now.Millisecond;
+                                    Random rand = new Random(dateSeed);
+                                    int grenadeDamage = rand.Next(1, 5) * round;
+                                    Debug.WriteLine("Grenade!  " + grenadeDamage.ToString() + " damage");
+                                    List<Creature> tempList = new List<Creature>();
+                                    foreach(Creature tempC in TurnOrder)
+                                    {
+                                        tempList.Add(tempC);
+                                    }
+                                    foreach(Creature creature in tempList)
+                                    {
+                                        int saveMe = creature.Level + rand.Next(1, 21);
+                                        if(saveMe >= (rand.Next(1, 21)))
+                                        {
+                                            Debug.WriteLine(creature.Name + " has been saved");
+                                        }
+                                        else
+                                        {
+                                            Debug.WriteLine(creature.Name + " is taking grenade damage, sucks to be them");
+                                            if (creature.Type == 0)
+                                            {
+                                                CC.TakeDamage(creature, grenadeDamage);
+                                                bool characterAliveGrenade = creature.Alive;
+
+                                                if (characterAliveGrenade == false)
+                                                {
+                                                    message = "Character dead ";
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+
+                                                    ItemPool.AddRange(CC.DropItems(creature));
+                                                    message = "Items Dropped :" + ItemPool.Count.ToString();
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+
+                                                    TurnOrder.Remove(creature);
+                                                    //add dead character to the score list
+                                                    team.Dataset.Remove(creature);
+                                                    GameBoardRemove(creature);
+
+                                                    message = "Character Removed :" + creature.Name;
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MC.TakeDamage(creature, grenadeDamage);
+                                                bool monsterAliveGrenade = creature.Alive;
+
+                                                if (monsterAliveGrenade == false)
+                                                {
+                                                    message = "Monster dead ";
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+
+                                                    ItemPool.AddRange(MC.DropItems(creature));
+                                                    message = "Items Dropped :" + ItemPool.Count.ToString();
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+
+                                                    TurnOrder.Remove(creature);
+                                                    //score.TotalMonstersKilled.Add(creature);
+                                                    CurrMonsters.Dataset.Remove(creature);
+                                                    GameBoardRemove(creature);
+
+                                                    message = "Monster Removed :" + creature.Name;
+                                                    Debug.WriteLine(message);
+                                                    screen.BattleMessages(message);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
                             }
                         }
                         if(hit == -1)
                         {
-                            Random rand = new Random();
+                            int dateSeed = DateTime.Now.Millisecond;
+                            Random rand = new Random(dateSeed);
                             int roll = rand.Next(1, 11);
                             if (GameGlobals.DisableRandomNumbers)
                             {
@@ -349,7 +428,8 @@ namespace GameOfChallengers.Controllers
                         }
                         if (hit == -1)
                         {
-                            Random rand = new Random();
+                            int dateSeed = DateTime.Now.Millisecond;
+                            Random rand = new Random(dateSeed);
                             int roll = rand.Next(1, 11);
                             if (GameGlobals.DisableRandomNumbers)
                             {
@@ -449,7 +529,7 @@ namespace GameOfChallengers.Controllers
                 " Total Experience :" + totalXP +
 
                 " Turns :" + turns +
-                " Monster Kills :" + CurrMonsters;
+                " Monster Kills :" + CurrMonsters.Dataset.Count;
             Debug.WriteLine(message);
             screen.BattleMessages(message);
 

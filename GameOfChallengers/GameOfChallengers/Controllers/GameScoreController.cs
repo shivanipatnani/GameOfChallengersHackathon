@@ -42,7 +42,8 @@ namespace GameOfChallengers.Controllers
                 }
                 if(GameGlobals.EnableRandomBadThings == true)
                 {
-                    Random rand = new Random();
+                    int dateSeed = DateTime.Now.Millisecond;
+                    Random rand = new Random(dateSeed);
                     Volcano = rand.Next(1, 21);
                     Volcano = 4;
                     if (GameGlobals.DisableRandomNumbers)
@@ -115,7 +116,7 @@ namespace GameOfChallengers.Controllers
                     {
                         Debug.WriteLine(message);
                     }
-                    GameScore = battle.AutoBattle(GameScore, Potions, Miracle);
+                    GameScore = battle.AutoBattle(GameScore, round, Potions, Miracle);
                     GameScore.Auto = true;
                    
                    

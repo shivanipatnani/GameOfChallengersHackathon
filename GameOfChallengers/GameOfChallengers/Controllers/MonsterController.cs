@@ -28,6 +28,28 @@ namespace GameOfChallengers.Controllers
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 Dropped.Add(item);
             }
+            int dropUnique = rand.Next(5);
+            if(dropUnique == 1)
+            {
+                Item item = items.Where(a => a.Id == "gun").FirstOrDefault();
+                if(GameGlobals.MonsterHandGrenade == true)
+                {
+                    int isGrenade = rand.Next(10);
+                    if (isGrenade == 1)
+                    {
+                        GameGlobals.Grenade = true;
+                    }
+                }
+                if (Dropped.Count > 2)
+                {
+                    Dropped.RemoveAt(2);
+                    Dropped.Add(item);
+                }
+                else
+                {
+                    Dropped.Add(item);
+                }
+            }
             return Dropped;
         }
         

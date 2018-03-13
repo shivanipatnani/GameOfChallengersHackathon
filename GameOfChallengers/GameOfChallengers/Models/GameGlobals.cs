@@ -16,5 +16,8 @@ namespace GameOfChallengers.Models
         public static bool EnableRandomBadThings = false;
         public static bool MiracleMax = false;
         public static bool FocusedAttack = false;
+        public static bool MonsterHandGrenade = false;
+
+        public static bool Grenade = false;
     }
 }

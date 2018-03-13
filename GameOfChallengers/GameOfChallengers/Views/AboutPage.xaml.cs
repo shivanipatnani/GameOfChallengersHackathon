@@ -103,12 +103,21 @@ namespace GameOfChallengers.Views
 
         }
 
-        private void Focused(object sender, ToggledEventArgs e)
+        private void Focus(object sender, ToggledEventArgs e)
         {
             if (e.Value == true)
                 GameGlobals.FocusedAttack = true;
             else
                 GameGlobals.FocusedAttack = false;
+
+        }
+
+        private void Grenade(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+                GameGlobals.MonsterHandGrenade = true;
+            else
+                GameGlobals.MonsterHandGrenade = false;
 
         }
 

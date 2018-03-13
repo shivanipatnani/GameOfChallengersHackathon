@@ -282,7 +282,7 @@
                         <Switch 
                 x:Name="FocusedAttack"
                 HorizontalOptions="Center"
-                Toggled="Focused"/>
+                Toggled="Focus"/>
                     </StackLayout>
 
                     <StackLayout
@@ -299,6 +299,22 @@
                 x:Name="MiracleMax"
                 HorizontalOptions="Center"
                 Toggled="Miracle"/>
+                    </StackLayout>
+
+                    <StackLayout
+                 HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+                        <Label 
+                FontSize="Small"
+                Text="Monster Hand Grenade"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                />
+                        <Switch 
+                x:Name="MonsterHandGrenade"
+                HorizontalOptions="Center"
+                Toggled="Grenade"/>
                     </StackLayout>
 
                 </StackLayout>
